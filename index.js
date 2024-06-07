@@ -12,10 +12,9 @@ app.use(express.json());
 const authenticate = (req, res, next) => {
     console.log(bearerToken);
     const authHeader = req.headers['authorization'];
-    if (authHeader && authHeader === `Bearer ${bearerToken}`) {
+    if (authHeader === bearerToken) {
         next();
     } else {
-        console.log(bearerToken);
         res.sendStatus(403);
     }
 };
